@@ -1,0 +1,23 @@
+<div class="alert alert-dismissible alert-{{type}} d-flex align-items-center p-5">
+    <!--begin::Icon-->
+    <i class="ki-duotone ki-notification-bing fs-2hx text-{{type}} me-4"><span class="path1"></span><span class="path2"></span></i>
+    <!--end::Icon-->
+
+    <!--begin::Wrapper-->
+    <div class="d-flex flex-column">
+        <!--begin::Title-->
+        <h4 class="mb-1 text-dark">Notification</h4>
+        <!--end::Title-->
+
+        <!--begin::Content-->
+        <span>{{message}}</span>
+        <!--end::Content-->
+    </div>
+    <!--end::Wrapper-->
+
+     <!--begin::Close-->
+    <button type="button" class="position-absolute position-sm-relative m-2 m-sm-0 top-0 end-0 btn btn-icon ms-sm-auto" data-bs-dismiss="alert">
+        <i class="ki-duotone ki-cross fs-1 text-{{type}}"><span class="path1"></span><span class="path2"></span></i>
+    </button>
+    <!--end::Close-->
+</div>
