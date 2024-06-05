@@ -32,7 +32,6 @@ export default class PensiunsController {
 
     async edit({ view, params }: any) {
         const pensiun = await Pensiun.findBy('id', params.id)
-        console.log(pensiun)
         return view.render('pages/perhitungan/pensiun/edit', { pensiun })
     }
 
@@ -41,7 +40,6 @@ export default class PensiunsController {
 
         post['id_user'] = auth.user.id
         post = await this.perhitungan(post)
-        console.log(post)
 
         const update = await Pensiun.query().update(post).where('id', post.id)
 
@@ -70,11 +68,17 @@ export default class PensiunsController {
         //total_tabungan
         post['hasil_tabungan'] = parseInt(post.terkumpul) + (parseInt(post.nabung) * parseInt(post.waktu_pensiun) * 12)
 
-        //return_investasi
-        post['return_investasi'] = 0 - parseInt(post.hasil_tabungan)
-
         //total_hasil
-        post['total_hasil'] = parseInt(post.hasil_tabungan) + parseInt(post.return_investasi)
+        const persen_perbulan = post.target_return / 1200 // bagi 12 dan 100
+        const berapa_bulan_invest = post.waktu_pensiun * 12
+        let modal_awal = parseInt(post.terkumpul)
+        for (let index = 0; index < berapa_bulan_invest; index++) {
+            modal_awal = (modal_awal + parseInt(post.nabung)) * (persen_perbulan + 1)
+        }
+        post['total_hasil'] = Math.round(modal_awal)
+
+        //return_investasi
+        post['return_investasi'] = parseInt(post.total_hasil) - parseInt(post.hasil_tabungan)
 
         return post
     }
