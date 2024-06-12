@@ -14,6 +14,9 @@ export default class PensiunsController {
 
     async post_add({ request, response, session, auth }: any) {
         let post = request.all()
+        post.terkumpul = post.terkumpul.replaceAll('.', '')
+        post.pengeluaran_perbulan = post.pengeluaran_perbulan.replaceAll('.', '')
+        post.nabung = post.nabung.replaceAll('.', '')
         console.log(post)
 
         post['id_user'] = auth.user.id
