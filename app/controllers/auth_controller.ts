@@ -24,6 +24,7 @@ export default class AuthController {
         const login = await hash.verify(user.password, post.password)
         if (login) {
             await auth.use('web').login(user)
+            session.put('user', user)
             session.flash('status', { type: 'success', message: 'Berhasil Login' })
             return response.redirect().toRoute('beranda')
         } else {
@@ -38,11 +39,14 @@ export default class AuthController {
 
     async postRegister({ response, request, session }: { response: any, request: any, session: any }) {
         const post = request.all()
+        const user = await User.query().where('username', post.username).first()
         if (post.confirm_password != post.password) {
             session.flash('status', { type: 'danger', message: 'Password tidak sama' })
             return response.redirect('back')
+        } else if (user) {
+            session.flash('status', { type: 'danger', message: 'Username sudah terdaftar, silahkan menggunakan username yang lain' })
+            return response.redirect('back')
         }
-        // post['password'] = await hash.make(post.password)
 
         delete post.confirm_password
         const create = await User.create(post)
@@ -57,7 +61,8 @@ export default class AuthController {
         }
     }
 
-    async logout({ response, auth }: any) {
+    async logout({ response, auth, session }: any) {
+        session.clear()
         await auth.use('web').logout()
         return response.redirect().toRoute('login')
     }

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!--begin::Head-->
+	<head>
+        @!component('components/head')
+	</head>
+	<!--end::Head-->
+	<!--begin::Body-->
+	<body id="kt_app_body" data-kt-app-header-fixed="true" data-kt-app-header-fixed-mobile="true" data-kt-app-sidebar-enabled="true" data-kt-app-sidebar-fixed="true" data-kt-app-sidebar-hoverable="true" data-kt-app-sidebar-push-toolbar="true" data-kt-app-sidebar-push-footer="true" data-kt-app-aside-enabled="false" data-kt-app-aside-fixed="false" data-kt-app-aside-push-toolbar="false" data-kt-app-aside-push-footer="false" class="app-default">
+		<!--begin::Theme mode setup on page load-->
+		<script>
+            var defaultThemeMode = "light"; var themeMode; if ( document.documentElement ) { if ( document.documentElement.hasAttribute("data-bs-theme-mode")) { themeMode = document.documentElement.getAttribute("data-bs-theme-mode"); } else { if ( localStorage.getItem("data-bs-theme") !== null ) { themeMode = localStorage.getItem("data-bs-theme"); } else { themeMode = defaultThemeMode; } } if (themeMode === "system") { themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } document.documentElement.setAttribute("data-bs-theme", themeMode); }
+        </script>
+		<!--end::Theme mode setup on page load-->
+		<!--begin::App-->
+		<div class="d-flex flex-column flex-root app-root" id="kt_app_root">
+			<!--begin::Page-->
+			<div class="app-page flex-column flex-column-fluid" id="kt_app_page">
+				<!--begin::Header-->
+				<div id="kt_app_header" class="app-header d-flex flex-column flex-stack">
+					<!--begin::Header main-->
+					@!component('components/header')
+					<!--end::Header main-->
+					<!--begin::Separator-->
+					<div class="app-header-separator"></div>
+					<!--end::Separator-->
+				</div>
+				<!--end::Header-->
+				<!--begin::Wrapper-->
+				<div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
+					<!--begin::Sidebar-->
+					@!component('components/sidebar')
+					<!--end::Sidebar-->
+					<!--begin::Main-->
+					<div class="app-main flex-column flex-row-fluid " id="kt_app_main">
+						<!--begin::Content wrapper-->
+						<div class="d-flex flex-column flex-column-fluid">
+							<!--begin::Content-->
+							<div id="kt_app_content" class="app-content flex-column-fluid">
+								<!--begin::Content container-->
+								<div id="kt_app_content_container" class="app-container container-fluid">
+									@if(flashMessages.get('status'))
+									<!--begin::Alert-->
+									@!component('components/alert', {
+										type: flashMessages.get('status.type'), 
+										message: flashMessages.get('status.message')
+										})
+									<!--end::Alert-->
+									@endif
+									<!--begin::Row-->
+									<div class="card mb-5 mb-xl-10" id="kt_profile_details_view">
+										<!--begin::Card header-->
+										<div class="card-header cursor-pointer">
+											<!--begin::Card title-->
+											<div class="card-title m-0">
+												<h3 class="fw-bold m-0">Profile Details</h3>
+											</div>
+											<!--end::Card title-->
+											<!--begin::Action-->
+											<a class="btn btn-sm btn-primary align-self-center" data-bs-toggle="modal" data-bs-target="#ubah_profile">Edit Profile</a>
+											<!--end::Action-->
+										</div>
+										<!--begin::Card header-->
+										<!--begin::Card body-->
+										<div class="card-body p-9">
+											<!--begin::Row-->
+											<div class="row mb-7">
+												<!--begin::Label-->
+												<label class="col-lg-4 fw-semibold text-muted">Username</label>
+												<!--end::Label-->
+												<!--begin::Col-->
+												<div class="col-lg-8">
+													<span class="fw-bold fs-6 text-gray-800">{{user.username}}</span>
+												</div>
+												<!--end::Col-->
+											</div>
+											<!--end::Row-->
+											<!--begin::Row-->
+											<div class="row mb-7">
+												<!--begin::Label-->
+												<label class="col-lg-4 fw-semibold text-muted">Nama Lengkap</label>
+												<!--end::Label-->
+												<!--begin::Col-->
+												<div class="col-lg-8">
+													<span class="fw-bold fs-6 text-gray-800">{{user.nama}}</span>
+												</div>
+												<!--end::Col-->
+											</div>
+											<!--end::Row-->
+											<!--begin::Row-->
+											<div class="row mb-7">
+												<!--begin::Label-->
+												<label class="col-lg-4 fw-semibold text-muted">Email</label>
+												<!--end::Label-->
+												<!--begin::Col-->
+												<div class="col-lg-8">
+													<span class="fw-bold fs-6 text-gray-800">{{user.email}}</span>
+												</div>
+												<!--end::Col-->
+											</div>
+											<!--end::Row-->
+											<!--begin::Row-->
+											<div class="row mb-7">
+												<!--begin::Label-->
+												<label class="col-lg-4 fw-semibold text-muted">Nomor Handphone</label>
+												<!--end::Label-->
+												<!--begin::Col-->
+												<div class="col-lg-8">
+													<span class="fw-bold fs-6 text-gray-800">{{user.no_hp}}</span>
+												</div>
+												<!--end::Col-->
+											</div>
+											<!--end::Row-->
+										</div>
+										<!--end::Card body-->
+									</div>
+									<!--end::Row-->
+								</div>
+								<!--end::Content container-->
+							</div>
+							<!--end::Content-->
+						</div>
+						<!--end::Content wrapper-->
+						<div class="modal fade" tabindex="-1" id="ubah_profile">
+							<div class="modal-dialog modal-dialog-scrollable">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title">Ubah Profile</h5>
+						
+										<!--begin::Close-->
+										<div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+											<i class="ki-duotone ki-cross fs-2x"><span class="path1"></span><span class="path2"></span></i>
+										</div>
+										<!--end::Close-->
+									</div>
+						
+									<form action="{{route('post_profile')}}" method="post">
+										<div class="modal-body">
+											<div class="card-body">
+												<!--begin::Input group-->
+												<div class="row mb-6">
+													<!--begin::Label-->
+													<label class="col-lg-4 col-form-label required fw-semibold fs-6">Username</label>
+													<!--end::Label-->
+													<!--begin::Col-->
+													<div class="col-lg-8 fv-row">
+														<input type="text" name="username" class="form-control form-control-lg form-control-solid" placeholder="Username" value="{{user.username}}"/>
+													</div>
+													<!--end::Col-->
+												</div>
+												<!--end::Input group-->
+												<!--begin::Input group-->
+												<div class="row mb-6">
+													<!--begin::Label-->
+													<label class="col-lg-4 col-form-label required fw-semibold fs-6">Nama</label>
+													<!--end::Label-->
+													<!--begin::Col-->
+													<div class="col-lg-8 fv-row">
+														<input type="text" name="nama" class="form-control form-control-lg form-control-solid" placeholder="Nama Lengkap" value="{{user.nama ? user.nama : ''}}"/>
+													</div>
+													<!--end::Col-->
+												</div>
+												<!--end::Input group-->
+												<!--begin::Input group-->
+												<div class="row mb-6">
+													<!--begin::Label-->
+													<label class="col-lg-4 col-form-label required fw-semibold fs-6">Email</label>
+													<!--end::Label-->
+													<!--begin::Col-->
+													<div class="col-lg-8 fv-row">
+														<input type="email" name="email" class="form-control form-control-lg form-control-solid" placeholder="Email" value="{{user.email ? user.email : ''}}"/>
+													</div>
+													<!--end::Col-->
+												</div>
+												<!--end::Input group-->
+												<!--begin::Input group-->
+												<div class="row mb-6">
+													<!--begin::Label-->
+													<label class="col-lg-4 col-form-label required fw-semibold fs-6">Nomor Handphone</label>
+													<!--end::Label-->
+													<!--begin::Col-->
+													<div class="col-lg-8 fv-row">
+														<input type="number" name="no_hp" class="form-control form-control-lg form-control-solid" placeholder="Nomor Handphone" value="{{user.no_hp ? user.no_hp : ''}}"/>
+													</div>
+													<!--end::Col-->
+												</div>
+												<!--end::Input group-->
+											</div>
+										</div>
+							
+										<div class="modal-footer">
+											<button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">Ubah Profile</button>
+											<button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+						<!--begin::Footer-->
+						@!component('components/footer')
+						<!--end::Footer-->
+					</div>
+					<!--end:::Main-->
+					<!--begin::aside-->
+					{{--  @!component('components/asidebar')  --}}
+					<!--end::aside-->
+				</div>
+				<!--end::Wrapper-->
+			</div>
+			<!--end::Page-->
+		</div>
+		<!--end::App-->
+		<!--begin::Scrolltop-->
+		@!component('components/scrolltop')
+		<!--end::Scrolltop-->
+		<!--begin::Modals-->
+		<!--end::Modals-->
+		<!--begin::Javascript-->
+		@!component('components/script')
+		<!--end::Javascript-->
+	</body>
+	<!--end::Body-->
+</html>

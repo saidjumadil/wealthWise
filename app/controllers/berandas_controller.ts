@@ -2,7 +2,10 @@
 
 export default class BerandasController {
     async index({ view, auth }: any) {
-        console.log(auth.user)
         return view.render('pages/beranda')
+    }
+
+    async landing({ view, auth, session }: any) {
+        return view.render('pages/home')
     }
 }

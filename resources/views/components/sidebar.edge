@@ -9,11 +9,21 @@
                         <i class="ki-outline ki-home-2 fs-2"></i>
                     </span>
                     <!--begin::Title-->
-                    <span class="menu-title">Beranda</span>
+                    <span class="menu-title">Dashboard</span>
                     <!--end::Title-->
                 </a>
             </div>
 
+            <div class="menu-item here show menu-accordion">
+                <a class="menu-link {{active == 'home' ? 'active' : ''}}" href="{{route('landing')}}">
+                    <span class="menu-icon">
+                        <i class="ki-outline ki-message-text fs-2"></i>
+                    </span>
+                    <!--begin::Title-->
+                    <span class="menu-title">Home</span>
+                    <!--end::Title-->
+                </a>
+            </div>
             <div data-kt-menu-trigger="click" class="menu-item here menu-accordion {{['pensiun'].includes(active) ? 'show' : ''}}">
                 <!--begin:Menu link-->
                 <span class="menu-link">
@@ -41,7 +51,7 @@
                     <!--begin:Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
-                        <a class="menu-link" href="">
+                        <a class="menu-link {{active == 'darurat' ? 'active' : ''}}" href="{{route('perhitungan.darurat.index')}}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
@@ -53,7 +63,7 @@
                     <!--begin:Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
-                        <a class="menu-link" href="">
+                        <a class="menu-link {{active == 'kpr' ? 'active' : ''}}" href="{{route('perhitungan.kpr.index')}}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
@@ -65,7 +75,7 @@
                     <!--begin:Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
-                        <a class="menu-link" href="">
+                        <a class="menu-link {{active == 'barang' ? 'active' : ''}}" href="{{route('perhitungan.barang.index')}}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>

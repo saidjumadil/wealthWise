@@ -104,10 +104,17 @@ License: For each use you must have a valid license purchased only from above li
 									</div>
 								</div>
 								<!--end::Menu wrapper-->
+								sess
 								<!--begin::Toolbar-->
+								@if(session.get('user'))
+								<div class="flex-equal text-end ms-1">
+									<a href="{{route('beranda')}}" class="btn btn-success">{{session.get('user.username')}}</a>
+								</div>
+								@else
 								<div class="flex-equal text-end ms-1">
 									<a href="{{route('login')}}" class="btn btn-success">Sign In</a>
 								</div>
+								@endif
 								<!--end::Toolbar-->
 							</div>
 							<!--end::Wrapper-->

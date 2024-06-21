@@ -12,7 +12,7 @@ import './hook/index.js'
 import { middleware } from './kernel.js'
 
 
-router.on('/').render('pages/home').as('landing')
+router.get('/', '#controllers/berandas_controller.landing').as('landing')
 router.get('/login', '#controllers/auth_controller.login').as('login')
 router.post('/login', '#controllers/auth_controller.postLogin').as('post_login')
 router.get('/register', '#controllers/auth_controller.register').as('register')
@@ -21,6 +21,8 @@ router.get('/logout', '#controllers/auth_controller.logout').as('logout')
 
 router.group(() => {
     router.get('/beranda', '#controllers/berandas_controller.index').as('beranda')
+    router.get('/profile', '#controllers/profiles_controller.index').as('profile')
+    router.post('/profile', '#controllers/profiles_controller.post').as('post_profile')
     router.group(() => {
         router.group(() => {
             router.get('/', '#controllers/perhitungan/pensiuns_controller.index').as('index')
@@ -30,6 +32,19 @@ router.group(() => {
             router.post('/edit', '#controllers/perhitungan/pensiuns_controller.post_edit').as('post_edit')
             router.get('/delete/:id', '#controllers/perhitungan/pensiuns_controller.post_delete').as('post_delete')
         }).as('pensiun').prefix('pensiun')
+
+        router.group(() => {
+            router.get('/', '#controllers/perhitungan/darurats_controller.index').as('index')
+        }).as('darurat').prefix('darurat')
+
+        router.group(() => {
+            router.get('/', '#controllers/perhitungan/darurats_controller.index').as('index')
+        }).as('kpr').prefix('kpr')
+
+        router.group(() => {
+            router.get('/', 'controllers/perhitungan/darurats_controller.index').as('index')
+        }).as('barang').prefix('barang')
+
     }).prefix('perhitungan').as('perhitungan')
 }).use(middleware.auth())
 

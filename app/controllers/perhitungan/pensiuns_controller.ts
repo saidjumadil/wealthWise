@@ -4,7 +4,7 @@ import Pensiun from "#models/pensiun"
 
 export default class PensiunsController {
     async index({ view, auth }: any) {
-        const pensiuns = await Pensiun.query().where('id_user', auth.user.id)
+        const pensiuns = await Pensiun.query().where('id_user', auth.user.id).orderBy('createdAt', 'desc')
         return view.render('pages/perhitungan/pensiun/index', { pensiuns })
     }
 
@@ -25,7 +25,7 @@ export default class PensiunsController {
         const create = await Pensiun.create(post)
 
         if (create) {
-            session.flash('status', { type: 'success', message: 'Perencanaan telah ditambahkan' })
+            session.flash('status', { type: 'success', message: 'Perencanaan telah ditambahkan', id: post.id })
             return response.redirect().toRoute('perhitungan.pensiun.index')
         } else {
             session.flash('status', { type: 'danger', message: 'Terjadi kesalahan. Silahkan dicoba lagi' })
@@ -47,7 +47,7 @@ export default class PensiunsController {
         const update = await Pensiun.query().update(post).where('id', post.id)
 
         if (update) {
-            session.flash('status', { type: 'success', message: 'Perencanaan telah diubah' })
+            session.flash('status', { type: 'success', message: 'Perencanaan telah diubah', id: post.id })
             return response.redirect().toRoute('perhitungan.pensiun.index')
         } else {
             session.flash('status', { type: 'danger', message: 'Terjadi kesalahan. Silahkan dicoba lagi' })
