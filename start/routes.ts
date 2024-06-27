@@ -46,6 +46,7 @@ router.group(() => {
         }).as('barang').prefix('barang')
 
     }).prefix('perhitungan').as('perhitungan')
+    
 }).use(middleware.auth())
 
 
