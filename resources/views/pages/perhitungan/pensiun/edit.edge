@@ -109,7 +109,7 @@
 								<!--end::Label-->
 								<div class="input-group input-group-solid mb-5">
 									<span class="input-group-text">Rp. </span>
-									<input type="number" class="form-control" aria-label="Dana yang sudah kamu kumpulkan" name="terkumpul" value="{{pensiun.terkumpul}}" required/>
+									<input type="text" class="form-control" aria-label="Dana yang sudah kamu kumpulkan" name="terkumpul" value="{{pemisahTitik(pensiun.terkumpul)}}" onkeyup="oneDot(this)" required/>
 								</div>
 							</div>
 							<!--end::Input group-->
@@ -125,7 +125,7 @@
 								<!--end::Label-->
 								<div class="input-group input-group-solid mb-5">
 									<span class="input-group-text">Rp. </span>
-									<input type="number" class="form-control" aria-label="Pengeluaran perbulan kamu" name="pengeluaran_perbulan" value="{{pensiun.pengeluaran_perbulan}}" required/>
+									<input type="text" class="form-control" aria-label="Pengeluaran perbulan kamu" name="pengeluaran_perbulan" value="{{pemisahTitik(pensiun.pengeluaran_perbulan)}}" onkeyup="oneDot(this)" required/>
 								</div>
 							</div>
 							<!--end::Input group-->
@@ -142,7 +142,7 @@
 								<!--end::Label-->
 								<div class="input-group input-group-solid mb-5">
 									<span class="input-group-text">Rp. </span>
-									<input type="number" class="form-control" aria-label="Pengeluaran perbulan kamu" name="nabung" value="{{pensiun.nabung}}" required/>
+									<input type="text" class="form-control" aria-label="Pengeluaran perbulan kamu" name="nabung" value="{{pemisahTitik(pensiun.nabung)}}" onkeyup="oneDot(this)" required/>
 								</div>
 							</div>
 							<!--end::Input group-->
@@ -429,6 +429,15 @@
 		<!--end::Modals-->
 		<!--begin::Javascript-->
 		@!component('components/script')
+		<script>
+			function oneDot(input) {				
+				let value = input.value.toString()
+				value = value.replace(/\D/g, '');
+				let parts = value.replaceAll('.', '');
+				parts = parts.replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+				input.value = parts
+			}
+		</script>
 		<!--end::Javascript-->
 	</body>
 	<!--end::Body-->
