@@ -18,7 +18,7 @@ License: For each use you must have a valid license purchased only from above li
 	</head>
 	<!--end::Head-->
 	<!--begin::Body-->
-	<body id="kt_body" data-bs-spy="scroll" data-bs-target="#kt_landing_menu" class="bg-white position-relative app-blank">
+	<body id="kt_body" data-bs-spy="scroll" data-bs-target="#kt_landing_menu" class="w-100 bg-white position-relative app-blank">
 		<!--begin::Theme mode setup on page load-->
 		<script>
 			var defaultThemeMode = "light"; 
@@ -122,15 +122,20 @@ License: For each use you must have a valid license purchased only from above li
 					</div>
 					<!--end::Header-->
 					<!--begin::Landing hero-->
-					<div class=" w-100 min-h-350px min-h-lg-300px px-9">
+					<div class="d-flex flex-column flex-center w-100 min-h-350px min-h-lg-300px px-9">
 						<!--begin::Clients-->
-						<div class="row flex-center px-6">
+						<div class="row flex-wrap position-relative px-6 ms-10">
 							<!--begin::Client-->
-							<div class="col col-6  me-15">
+							<div class="col d-flex flex-center m-md-6">
 								<div class="text-start mb-5 mb-lg-10 py-10 py-lg-20">
 									<!--begin::Title-->
-									<h1 class="text-warning lh-base fw-bold fs-2x fs-lg-3x mb-3">{{env.app_name}}</h1>
-									<p class="fs-5 text-muted">Cerdas Mengatur, Pasti Makmur!</p>
+									<h1 class="text-warning lh-base fw-bold fs-2x fs-lg-3x mb-2">{{env.app_name}}</h1>
+									<div>
+										<p class="fs-5 text-muted mb-2">Cerdas Mengatur, Pasti Makmur!</p>
+										<span class="fs-5 text-gray-200">
+											Aplikasi strategi keuangan yang dirancang untuk membantu Anda mengelola aset dan keuangan dengan cerdas. Kami memahami bahwa meraih kemakmuran membutuhkan perencanaan yang matang dan keputusan yang bijak. Dengan Teman Aset, Anda dapat mengatur keuangan secara efisien, memaksimalkan potensi investasi, dan memastikan setiap langkah finansial Anda tepat sasaran.
+										</span>
+									</div>
 									<!--end::Title-->
 									<!--begin::Action-->
 									{{--  <div class="d-flex ">
@@ -144,7 +149,7 @@ License: For each use you must have a valid license purchased only from above li
 							</div>
 							<!--end::Client-->
 							<!--begin::Client-->
-							<div class="col col-6 ">
+							<div class="col d-flex flex-center m-3 m-md-6">
 								<img class="card-rounded" src="assets/media/landing/landing.png" alt="" width="400px">
 							</div>
 							<!--end::Client-->
@@ -585,7 +590,7 @@ License: For each use you must have a valid license purchased only from above li
 							</div>
 							<!--end::Row-->
 							<!--begin::Card-->
-							<div class="card mb-4 bg-light text-center">
+							{{--  <div class="card mb-4 bg-light text-center">
 								<!--begin::Body-->
 								<div class="card-body py-12">
 									<!--begin::Icon-->
@@ -625,7 +630,7 @@ License: For each use you must have a valid license purchased only from above li
 									<!--end::Icon-->
 								</div>
 								<!--end::Body-->
-							</div>
+							</div>  --}}
 							<!--end::Card-->
 						</div>
 						<!--end::Body-->
@@ -656,7 +661,7 @@ License: For each use you must have a valid license purchased only from above li
 							<div class="d-flex align-items-center order-2 order-md-1">
 								<!--begin::Logo-->
 								<a href="{{route('landing')}}">
-									<img alt="Logo" src="assets/media/logos/logo-02.svg" class="h-15px h-md-20px" />
+									<img alt="Logo" src="assets/media/logos/logo-06.png" class="h-15px h-md-20px" />
 								</a>
 								<!--end::Logo image-->
 								<!--begin::Logo image-->
