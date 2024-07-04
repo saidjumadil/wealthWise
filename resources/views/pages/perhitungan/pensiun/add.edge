@@ -75,6 +75,14 @@
 							  id="kt_app_content_container"
 							  class="app-container container-fluid"
 							>
+							@if(flashMessages.get('status'))
+								<!--begin::Alert-->
+								@!component('components/alert', {
+									type: flashMessages.get('status.type'), 
+									message: flashMessages.get('status.message')
+									})
+								<!--end::Alert-->
+								@endif
 							  <!--begin::Card-->
 							  <div class="card">
 								<!--begin::Card body-->
@@ -193,7 +201,7 @@
 										<!--begin::Label-->
 										<label class="d-flex align-items-center fs-6 fw-semibold mb-2">
 											<span class="required">Target return investasi per tahun fix</span>
-											<span class="ms-1" data-bs-toggle="tooltip" title="Bunga/Return terhadap kenaikan tabungan pertahun anda pada sebuah instrument investasi ex: Reksadana pertahun, Saham pertahun, Obligasi, dan lain lain">
+											<span class="ms-1" data-bs-toggle="tooltip" title="Bunga/Return terhadap kenaikan tabungan pertahun anda pada sebuah instrument investasi ex: 6.3% Reksadana pertahun, 12.1% Saham pertahun, 3% Obligasi, dan lain lain">
 												<i class="ki-outline ki-information-5 text-gray-500 fs-6"></i>
 											</span>
 										</label>
@@ -229,7 +237,7 @@
 							<div class="text-end mb-5">
 								<a href="{{route('perhitungan.pensiun.index')}}" id="kt_modal_new_target_cancel" class="btn btn-danger me-3">Batal</a>
 								<button type="submit" id="kt_modal_new_target_submit" class="btn btn-primary">
-									<span class="indicator-label">Simpan Rencana Anda</span>
+									<span class="indicator-label">Lihat dan Simpan Rencana Anda!</span>
 									<span class="indicator-progress">Please wait...
 									<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
 								</button>

@@ -75,6 +75,14 @@
 							  id="kt_app_content_container"
 							  class="app-container container-fluid"
 							>
+							@if(flashMessages.get('status'))
+								<!--begin::Alert-->
+								@!component('components/alert', {
+									type: flashMessages.get('status.type'), 
+									message: flashMessages.get('status.message')
+									})
+								<!--end::Alert-->
+								@endif
 							  <!--begin::Card-->
 							  <div class="card">
 								<!--begin::Card body-->
@@ -194,7 +202,7 @@
 										<!--begin::Label-->
 										<label class="d-flex align-items-center fs-6 fw-semibold mb-2">
 											<span class="required">Target return investasi per tahun fix</span>
-											<span class="ms-1" data-bs-toggle="tooltip" title="Bunga/Return terhadap kenaikan tabungan pertahun anda pada sebuah instrument investasi ex: Reksadana pertahun, Saham pertahun, Obligasi, dan lain lain">
+											<span class="ms-1" data-bs-toggle="tooltip" title="Bunga/Return terhadap kenaikan tabungan pertahun anda pada sebuah instrument investasi ex: 6.3% Reksadana pertahun, 12.1% Saham pertahun, 3% Obligasi, dan lain lainBunga/Return terhadap kenaikan tabungan pertahun anda pada sebuah instrument investasi ex: 6.3% Reksadana pertahun, 12.1 Saham pertahun, 3% Obligasi, dan lain lain">
 												<i class="ki-outline ki-information-5 text-gray-500 fs-6"></i>
 											</span>
 										</label>
@@ -434,6 +442,7 @@
 				let value = input.value.toString()
 				value = value.replace(/\D/g, '');
 				let parts = value.replaceAll('.', '');
+				console.log(parts)
 				parts = parts.replace(/\B(?=(\d{3})+(?!\d))/g,'.');
 				input.value = parts
 			}

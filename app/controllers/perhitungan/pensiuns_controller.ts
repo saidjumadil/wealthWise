@@ -17,19 +17,24 @@ export default class PensiunsController {
         post.terkumpul = post.terkumpul.replaceAll('.', '')
         post.pengeluaran_perbulan = post.pengeluaran_perbulan.replaceAll('.', '')
         post.nabung = post.nabung.replaceAll('.', '')
-        console.log(post)
 
         post['id_user'] = auth.user.id
         post = await this.perhitungan(post)
 
-        const create = await Pensiun.create(post)
+        try {
+            const create = await Pensiun.create(post)
 
-        if (create) {
-            session.flash('status', { type: 'success', message: 'Perencanaan telah ditambahkan', id: post.id })
-            return response.redirect().toRoute('perhitungan.pensiun.index')
-        } else {
-            session.flash('status', { type: 'danger', message: 'Terjadi kesalahan. Silahkan dicoba lagi' })
-            return response.redirect().toRoute('perhitungan.pensiun.index')
+            if (create) {
+                session.flash('status', { type: 'success', message: 'Perencanaan telah ditambahkan', id: create.id })
+                return response.redirect().toRoute('perhitungan.pensiun.index')
+            } else {
+                session.flash('status', { type: 'danger', message: 'Terjadi kesalahan. Silahkan dicoba lagi' })
+                return response.redirect().toRoute('perhitungan.pensiun.index')
+            }
+        } catch (error) {
+            console.log(error)
+            session.flash('status', { type: 'danger', message: 'Error. Data yang anda masukkan tidak sesuai dengan kaidah' })
+            return response.redirect('back')
         }
     }
 
@@ -47,15 +52,21 @@ export default class PensiunsController {
         post['id_user'] = auth.user.id
         post = await this.perhitungan(post)
 
-        const update = await Pensiun.query().update(post).where('id', post.id)
-
-        if (update) {
-            session.flash('status', { type: 'success', message: 'Perencanaan telah diubah', id: post.id })
-            return response.redirect().toRoute('perhitungan.pensiun.index')
-        } else {
-            session.flash('status', { type: 'danger', message: 'Terjadi kesalahan. Silahkan dicoba lagi' })
-            return response.redirect().toRoute('perhitungan.pensiun.index')
+        try {
+            const update = await Pensiun.query().update(post).where('id', post.id)
+            if (update) {
+                session.flash('status', { type: 'success', message: 'Perencanaan telah diubah', id: post.id })
+                return response.redirect().toRoute('perhitungan.pensiun.index')
+            } else {
+                session.flash('status', { type: 'danger', message: 'Terjadi kesalahan. Silahkan dicoba lagi' })
+                return response.redirect().toRoute('perhitungan.pensiun.index')
+            }
+        } catch (error) {
+            console.log(error)
+            session.flash('status', { type: 'danger', message: 'Error. Data yang anda masukkan tidak sesuai dengan kaidah' })
+            return response.redirect('back')
         }
+
     }
 
     async perhitungan(post: any) {

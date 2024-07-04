@@ -38,15 +38,15 @@ router.group(() => {
         }).as('darurat').prefix('darurat')
 
         router.group(() => {
-            router.get('/', '#controllers/perhitungan/darurats_controller.index').as('index')
+            router.get('/', '#controllers/perhitungan/kprs_controller.index').as('index')
         }).as('kpr').prefix('kpr')
 
         router.group(() => {
-            router.get('/', 'controllers/perhitungan/darurats_controller.index').as('index')
+            router.get('/', '#controllers/perhitungan/barangs_controller.index').as('index')
         }).as('barang').prefix('barang')
 
     }).prefix('perhitungan').as('perhitungan')
-    
+
 }).use(middleware.auth())
 
 

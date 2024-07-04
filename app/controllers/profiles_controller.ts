@@ -9,9 +9,15 @@ export default class ProfilesController {
         return view.render('pages/profile', { user })
     }
 
-    async post({ request, response, session }: any) {
+    async post({ request, response, session, auth }: any) {
         const post = request.all()
-        const update = await User.query().where('username', post.username).update(post)
+        const user = await User.query().where('username', post.username).first()
+        if (user) {
+            session.flash('status', { type: 'danger', message: 'Username sudah terdaftar, silahkan menggunakan username yang lain' })
+            return response.redirect('back')
+        }
+
+        const update = await User.query().where('id', auth.user.id).update(post)
         if (update) {
             session.flash('status', { type: 'success', message: 'Profile berhasil diubah' })
             return response.redirect('back')

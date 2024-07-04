@@ -60,8 +60,8 @@ License: For each use you must have a valid license purchased only from above li
 									<!--end::Mobile menu toggle-->
 									<!--begin::Logo image-->
 									<a href="{{route('landing')}}">
-										<img alt="Logo" src="assets/media/logos/logo-02.svg" class="logo-default h-35px h-lg-40px" />
-										<img alt="Logo" src="assets/media/logos/logo-04.svg" class="logo-sticky h-3	0px h-lg-35px" />
+										<img alt="Logo" src="assets/media/logos/logo-06.png" class="logo-default h-35px h-lg-25px" />
+										<img alt="Logo" src="assets/media/logos/logo-05.png" class="logo-sticky h-30px h-lg-25px" />
 									</a>
 									<!--end::Logo image-->
 								</div>
@@ -88,7 +88,7 @@ License: For each use you must have a valid license purchased only from above li
 											<!--begin::Menu item-->
 											<div class="menu-item">
 												<!--begin::Menu link-->
-												<a class="menu-link nav-link py-3 px-4 px-xxl-6" href="#premium" data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">Premium</a>
+												<a class="menu-link nav-link py-3 px-4 px-xxl-6" href="#rencanapensiun" data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">Rencana Pensiun</a>
 												<!--end::Menu link-->
 											</div>
 											<!--end::Menu item-->
@@ -122,30 +122,30 @@ License: For each use you must have a valid license purchased only from above li
 					</div>
 					<!--end::Header-->
 					<!--begin::Landing hero-->
-					<div class="d-flex flex-column flex-center w-100 min-h-350px min-h-lg-300px px-9">
+					<div class=" w-100 min-h-350px min-h-lg-300px px-9">
 						<!--begin::Clients-->
-						<div class="d-flex flex-center flex-wrap position-relative px-6">
+						<div class="row flex-center px-6">
 							<!--begin::Client-->
-							<div class="d-flex flex-center m-3 m-md-6">
+							<div class="col col-6  me-15">
 								<div class="text-start mb-5 mb-lg-10 py-10 py-lg-20">
 									<!--begin::Title-->
-									<h1 class="text-warning lh-base fw-bold fs-2x fs-lg-3x mb-3">WealthWise</h1>
-									<p class="fs-5 text-muted">Hitung Sekarang, Nikmati Kemudian! Rencanakan Keuangan Masa Depanmu dengan Mudah.</p>
+									<h1 class="text-warning lh-base fw-bold fs-2x fs-lg-3x mb-3">{{env.app_name}}</h1>
+									<p class="fs-5 text-muted">Cerdas Mengatur, Pasti Makmur!</p>
 									<!--end::Title-->
 									<!--begin::Action-->
-									<div class="d-flex ">
+									{{--  <div class="d-flex ">
 										<a href="{{route('perhitungan.pensiun.index')}}" class="btn btn-secondary me-3">Hitung KPR</a>
 										<a href="{{route('perhitungan.pensiun.index')}}" class="btn btn-secondary me-3">Hitung Dana Pensiun</a>
 										<a href="{{route('beranda')}}" class="btn btn-secondary me-3">More..</a>
 
-									</div>
+									</div>  --}}
 									<!--end::Action-->
 								</div>
 							</div>
 							<!--end::Client-->
 							<!--begin::Client-->
-							<div class="d-flex flex-center m-3 m-md-6">
-								<img class="card-rounded" src="assets/media/landing/landing-1.jpg" alt="" width="400px">
+							<div class="col col-6 ">
+								<img class="card-rounded" src="assets/media/landing/landing.png" alt="" width="400px">
 							</div>
 							<!--end::Client-->
 						</div>
@@ -229,14 +229,14 @@ License: For each use you must have a valid license purchased only from above li
 					<!--end::Heading-->
 					<!--begin::Row-->
 					<marquee behavior="" direction="" hspace="3" loop>
-						<div class="row w-100 gy-10 mb-md-20">
+						<div class="d-flex w-100 gy-10 mb-md-20">
 							<!--begin::Col-->
-							<div class="col-md-3 px-5 mb-10">
+							<div class="px-5 mb-10">
 								<!--begin::Story-->
 								<a href="{{route('perhitungan.pensiun.index')}}">
 									<div class="text-center mb-10 mb-md-0 pb-5">
 										<!--begin::Illustration-->
-										<img src="assets/media/illustrations/sketchy-1/2.png" class="mh-125px mb-9" alt="" />
+										<img src="assets/media/illustrations/sketchy-1/dapen.png" class="mh-125px mb-9" alt="" />
 										<!--end::Illustration-->
 										<!--begin::Heading-->
 										<div class="d-flex flex-center mb-5">
@@ -252,12 +252,12 @@ License: For each use you must have a valid license purchased only from above li
 							</div>
 							<!--end::Col-->
 							<!--begin::Col-->
-							<div class="col-md-3 px-5">
+							<div class="px-5">
 								<!--begin::Story-->
 								<a href="{{route('perhitungan.pensiun.index')}}">
 									<div class="text-center mb-10 mb-md-0">
 										<!--begin::Illustration-->
-										<img src="assets/media/illustrations/sketchy-1/8.png" class="mh-125px mb-9" alt="" />
+										<img src="assets/media/illustrations/sketchy-1/KPR.png" class="mh-125px mb-9" alt="" />
 										<!--end::Illustration-->
 										<!--begin::Heading-->
 										<div class="d-flex flex-center mb-5">
@@ -272,12 +272,12 @@ License: For each use you must have a valid license purchased only from above li
 							</div>
 							<!--end::Col-->
 							<!--begin::Col-->
-							<div class="col-md-3 px-5">
+							<div class="px-5">
 								<!--begin::Story-->
 								<a href="{{route('perhitungan.pensiun.index')}}">
 									<div class="text-center mb-10 mb-md-0">
 										<!--begin::Illustration-->
-										<img src="assets/media/illustrations/sketchy-1/12.png" class="mh-125px mb-9" alt="" />
+										<img src="assets/media/illustrations/sketchy-1/danadarurat.png" class="mh-125px mb-9" alt="" />
 										<!--end::Illustration-->
 										<!--begin::Heading-->
 										<div class="d-flex flex-center mb-5">
@@ -293,12 +293,12 @@ License: For each use you must have a valid license purchased only from above li
 							<!--end::Col-->
 							
 							<!--begin::Col-->
-							<div class="col-md-3 px-5">
+							<div class="px-5">
 								<!--begin::Story-->
 								<a href="{{route('perhitungan.pensiun.index')}}">
 									<div class="text-center mb-10 mb-md-0">
 										<!--begin::Illustration-->
-										<img src="assets/media/illustrations/sketchy-1/12.png" class="mh-125px mb-9" alt="" />
+										<img src="assets/media/illustrations/sketchy-1/barang.png" class="mh-125px mb-9" alt="" />
 										<!--end::Illustration-->
 										<!--begin::Heading-->
 										<div class="d-flex flex-center mb-5">
@@ -371,7 +371,7 @@ License: For each use you must have a valid license purchased only from above li
 					<!--begin::Container-->
 					<div class="container">
 						<!--begin::Heading-->
-						<div class="text-center mt-15 mb-18" id="premium" data-kt-scroll-offset="{default: 100, lg: 150}">
+						<div class="text-center mt-15 mb-18" id="rencanapensiun" data-kt-scroll-offset="{default: 100, lg: 150}">
 							<!--begin::Title-->
 							<h3 class="fs-2hx text-warning fw-bold mb-5">Rencana pensiun dengan 4% of rule</h3>
 							<!--end::Title-->
@@ -571,11 +571,11 @@ License: For each use you must have a valid license purchased only from above li
 											<!--end::Rating-->
 											<!--begin::Title-->
 											<div class="fs-2hx fw-bold text-warning mb-3">
-												WealthWise
+												{{env.app_name}}
 											</div>
 											<!--end::Title-->
 											<!--begin::Feedback-->
-											<div class="text-gray-500 fw-semibold fs-4">WealthWise adalah aplikasi revolusioner yang dirancang untuk membantu Anda mengelola dan merencanakan keuangan masa depan dengan cerdas dan efisien. Apakah Anda ingin menabung untuk pendidikan anak, membeli rumah impian, atau mempersiapkan masa pensiun yang nyaman, WealthWise menyediakan alat dan fitur yang Anda butuhkan untuk mencapai tujuan keuangan Anda.</div>
+											<div class="text-gray-500 fw-semibold fs-4">{{env.app_name}} adalah aplikasi revolusioner yang dirancang untuk membantu Anda mengelola dan merencanakan keuangan masa depan dengan cerdas dan efisien. Apakah Anda ingin menabung untuk pendidikan anak, membeli rumah impian, atau mempersiapkan masa pensiun yang nyaman, {{env.app_name}} menyediakan alat dan fitur yang Anda butuhkan untuk mencapai tujuan keuangan Anda.</div>
 											<!--end::Feedback-->
 										</div>
 										<!--end::Wrapper-->

@@ -327,7 +327,7 @@
 																</div>
 																<!--end::Item-->
 																<!--begin::Separator-->
-																<div class="separator border-success my-5"></div>
+																<div class="separator separator-dashed my-3"></div>
 																<!--end::Separator-->
 																<!--begin::Item-->
 																<div class="d-flex flex-stack">
@@ -370,9 +370,11 @@
 																	<!--end::Statistics-->
 																</div>
 																<!--end::Item-->
+																
 																<!--begin::Separator-->
-																<div class="separator separator-dashed my-3"></div>
+																<div class="separator border-success my-5"></div>
 																<!--end::Separator-->
+																
 																<!--begin::Item-->
 																<div class="d-flex flex-stack">
 																	<!--begin::Section-->
@@ -400,7 +402,7 @@
 																	<!--begin::Section-->
 																	<label class="d-flex align-items-center fs-6 fw-semibold mb-2" style="width:280px">
 																		<div class="text-gray-700 fw-semibold fs-6" >Total uang yang diperlukan ketika umur {{item.usia_target}} tahun berdasarkan 4% of rule</div>
-																		<span class="ms-1" data-bs-toggle="tooltip" title="Aturan 4% adalah pedoman umum yang sering dipakai untuk memperkirakan jumlah uang yang bisa diambil secara rutin dari tabungan pensiun kita setiap tahun. Anda dapat melihat penjelasan lengkapnya pada paper 4% of rule investment, Atau pada halaman utama pada WealthWise.">
+																		<span class="ms-1" data-bs-toggle="tooltip" title="Aturan 4% adalah pedoman umum yang sering dipakai untuk memperkirakan jumlah uang yang bisa diambil secara rutin dari tabungan pensiun kita setiap tahun. Anda dapat melihat penjelasan lengkapnya pada paper 4% of rule investment, Atau pada halaman utama pada {{env.app_name}}.">
 																			<i class="ki-outline ki-information-5 text-gray-500 fs-6"></i>
 																		</span>
 																	</label>
@@ -409,6 +411,28 @@
 																	<div class="d-flex align-items-senter">
 																		<!--begin::Number-->
 																		<span class="text-gray-900 fw-bolder fs-6">Rp. {{pemisahTitik(item.total_target)}}</span>
+																		<!--end::Number-->
+																	</div>
+																	<!--end::Statistics-->
+																</div>
+																<!--end::Item-->
+																<!--begin::Separator-->
+																<div class="separator separator-dashed my-3"></div>
+																<!--end::Separator-->
+																<!--begin::Item-->
+																<div class="d-flex flex-stack">
+																	<!--begin::Section-->
+																	<label class="d-flex align-items-center fs-6 fw-semibold mb-2">
+																		<div class="text-gray-700 fw-semibold fs-6">Jumlah Pokok Dari Investasi</div>
+																		{{--  <span class="ms-1" data-bs-toggle="tooltip" title="Cash awal yang akan anda investasikan di instrumen">
+																			<i class="ki-outline ki-information-5 text-gray-500 fs-6"></i>
+																		</span>  --}}
+																	</label>
+																	<!--end::Section-->
+																	<!--begin::Statistics-->
+																	<div class="d-flex align-items-senter">
+																		<!--begin::Number-->
+																		<span class="text-gray-900 fw-bolder fs-6">Rp. {{pemisahTitik(item.hasil_tabungan)}}</span>
 																		<!--end::Number-->
 																	</div>
 																	<!--end::Statistics-->
@@ -442,7 +466,11 @@
 																<!--begin::Item-->
 																<div class="d-flex flex-stack">
 																	<!--begin::Section-->
-																	<div class="text-gray-700 fw-semibold fs-6 w-50">Total Hasil Investasi dari Investasimu selama {{item.waktu_pensiun}} tahun </div>
+																	<div class="text-primary fw-semibold fs-6 w-50">Total Hasil Investasi dari Investasimu selama {{item.waktu_pensiun}} tahun </div>
+																	<span class="ms-1" data-bs-toggle="tooltip" title="Total dari: Return dari Investasi + Jumlah Pokok dari Investasi">
+																			<i class="ki-outline ki-information-5 text-gray-500 fs-6"></i>
+																		</span>
+																	
 																	<!--end::Section-->
 																	<!--begin::Statistics-->
 																	<div class="d-flex align-items-senter">
