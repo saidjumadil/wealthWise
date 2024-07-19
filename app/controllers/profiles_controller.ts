@@ -12,7 +12,7 @@ export default class ProfilesController {
     async post({ request, response, session, auth }: any) {
         const post = request.all()
         const user = await User.query().where('username', post.username).first()
-        if (user) {
+        if (user && post.username != auth.user.username) {
             session.flash('status', { type: 'danger', message: 'Username sudah terdaftar, silahkan menggunakan username yang lain' })
             return response.redirect('back')
         }

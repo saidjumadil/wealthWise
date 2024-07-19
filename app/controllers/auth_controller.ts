@@ -14,9 +14,11 @@ export default class AuthController {
         const post = request.all()
         // console.log(await hash.make(post.password))
         const user: any = await User.findBy('username', post.username)
-        console.log(user.password)
         if (!user) {
             session.flash('status', { type: 'danger', message: 'Akun tidak terdaftar, Silahkan mendaftar terlebih dahulu' })
+            return response.redirect().back()
+        } else if (!post.password) {
+            session.flash('status', { type: 'danger', message: 'Password tidak boleh kosong' })
             return response.redirect().back()
         }
 
